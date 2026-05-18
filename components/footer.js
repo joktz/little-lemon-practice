@@ -1,13 +1,15 @@
 import * as React from 'react';
 import { View, Text } from 'react-native';
 
-export default function LittleLemonHeader() {
+export default function Footer() {
     return <View style={{
         backgroundColor:'#F4CE14',
+        marginBottom: 10,
     }}>
         <Text style={{
-            fontSize: 30,
+            fontSize: 18,
+            color: 'black',
             textAlign: 'center',
-        }}>Little Lemon Restaurant</Text>
+        }}>All rights reserved</Text>
     </View>
 }
