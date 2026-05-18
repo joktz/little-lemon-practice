@@ -6,8 +6,11 @@ export default function LittleLemonHeader() {
         backgroundColor:'#F4CE14',
     }}>
         <Text style={{
+            padding: 10,
             fontSize: 30,
             textAlign: 'center',
-        }}>Little Lemon Restaurant</Text>
+        }}>
+            Little Lemon
+        </Text>
     </View>
 }
