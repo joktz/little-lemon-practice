@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Text, ScrollView, StyleSheet, FlatList, SectionList } from 'react-native';
+import { View, Text, StyleSheet, SectionList } from 'react-native';
 
 // The list of menu items
 
@@ -59,7 +59,7 @@ const Item = ({name, price}) => {
 
 export default function MenuItems() {
     // Function calling for SectionList
-    const renderItem = ({item, price}) => <Item name={item.name} price={item.price}/>
+    const renderItem = ({item}) => <Item name={item.name} price={item.price}/>
 
     const renderSectionHeader = ({section: {title}}) => (
         <Text style={menuStyles.sectionHeader}>{title}</Text>
