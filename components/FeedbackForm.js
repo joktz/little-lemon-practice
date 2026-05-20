@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, StyleSheet, TextInput, ScrollView, Text } from 'react-native';
+import { View, StyleSheet, TextInput, ScrollView, Text, KeyboardAvoidingView, Platform } from 'react-native';
 
 export default function FeedbackForm() {
     const [firstName, onChangeFirstName] = React.useState('');
@@ -7,14 +7,16 @@ export default function FeedbackForm() {
     const [message, onChangeMessage] = React.useState('');
 
     return (
-        <ScrollView style={styles.container}>
-            <Text style={styles.headingSection}>
-                How was your visit to Little Lemon?
-            </Text>
-            <TextInput value={firstName} onChangeText={onChangeFirstName} style={styles.input} />
-            <TextInput value={lastName} onChangeText={onChangeLastName} style={styles.input} />
-            <TextInput value={message} onChangeText={onChangeMessage} style={styles.input} />
-        </ScrollView>
+        <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+            <ScrollView keyboardDismissMode='on-drag'>
+                <Text style={styles.headingSection}>
+                    How was your visit to Little Lemon?
+                </Text>
+                <TextInput value={firstName} onChangeText={onChangeFirstName} style={styles.input} />
+                <TextInput value={lastName} onChangeText={onChangeLastName} style={styles.input} />
+                <TextInput value={>message} onChangeText={onChangeMessage} style={styles.input} />
+            </ScrollView>
+        </KeyboardAvoidingView>
     )
 }
 
