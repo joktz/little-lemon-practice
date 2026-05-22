@@ -5,6 +5,7 @@ export default function FeedbackForm() {
     const [firstName, onChangeFirstName] = React.useState('');
     const [lastName, onChangeLastName] = React.useState('');
     const [message, onChangeMessage] = React.useState('');
+    const [phone, onChangePhone] = React.useState('');
 
     return (
         <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
@@ -12,9 +13,21 @@ export default function FeedbackForm() {
                 <Text style={styles.headingSection}>
                     How was your visit to Little Lemon?
                 </Text>
-                <TextInput value={firstName} onChangeText={onChangeFirstName} style={styles.input} />
-                <TextInput value={lastName} onChangeText={onChangeLastName} style={styles.input} />
-                <TextInput value={message} onChangeText={onChangeMessage} style={styles.input} />
+                <TextInput value={firstName} onChangeText={onChangeFirstName} placeholder='First name' style={styles.input} />
+                <TextInput value={lastName} onChangeText={onChangeLastName} placeholder='Last name' style={styles.input} />
+                <TextInput 
+                    value={phone} 
+                    onChangeText={onChangePhone}
+                    placeholder='Phone number'
+                    keyboardType='phone-pad'
+                    style={styles.input} />
+                <TextInput
+                    value={message} 
+                    onChangeText={onChangeMessage} 
+                    placeholder='Write your message here...'
+                    multiline={true}
+                    maxLength={250}
+                    style={styles.messageInput} />
             </ScrollView>
         </KeyboardAvoidingView>
     )
@@ -46,6 +59,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         padding: 10,
         fontSize: 16,
-        backgroundColor: '#F4CE14',
+        borderColor: '#EDEFEE',
+        backgroundColor: '#EDEFEE',
     }
 })
