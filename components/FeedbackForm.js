@@ -14,7 +14,7 @@ export default function FeedbackForm() {
                 </Text>
                 <TextInput value={firstName} onChangeText={onChangeFirstName} style={styles.input} />
                 <TextInput value={lastName} onChangeText={onChangeLastName} style={styles.input} />
-                <TextInput value={>message} onChangeText={onChangeMessage} style={styles.input} />
+                <TextInput value={message} onChangeText={onChangeMessage} style={styles.input} />
             </ScrollView>
         </KeyboardAvoidingView>
     )
