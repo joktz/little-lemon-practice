@@ -16,6 +16,7 @@ export default function LoginScreen() {
                     placeholder='Email'
                     style={styles.input}
                     keyboardType={'email-address'}
+                    clearButtonMode='always'
                 />
                 <TextInput
                     value={password}
@@ -24,6 +25,7 @@ export default function LoginScreen() {
                     style={styles.input}
                     keyboardType={'default'}
                     secureTextEntry={true}
+                    clearButtonMode='always'
                 />
             </ScrollView>
         </KeyboardAvoidingView>     
