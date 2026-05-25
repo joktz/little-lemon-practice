@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { View, Text, StyleSheet, SectionList } from 'react-native';
+import React, { useState} from 'react';
+import { View, Text, StyleSheet, SectionList, Pressable } from 'react-native';
 
 // The list of menu items
 
@@ -59,6 +59,7 @@ const Item = ({name, price}) => {
 
 export default function MenuItems() {
     // Function calling for SectionList
+    const [showMenu, setShowMenu] = useState(false)
     const renderItem = ({item}) => <Item name={item.name} price={item.price}/>
 
     const renderSectionHeader = ({section: {title}}) => (
@@ -69,11 +70,20 @@ export default function MenuItems() {
 
     return (
         <View style={menuStyles.container}>
-            <SectionList sections={menuItemsToDisplay}
+            <Pressable style={menuStyles.button} onPress={() => {
+                setShowMenu(!showMenu);
+            }}>
+                <Text style={menuStyles.buttonText}> 
+                    {showMenu ? 'Home' : 'View Menu'}
+                </Text>
+            </Pressable>
+            {showMenu && (
+                <SectionList sections={menuItemsToDisplay}
                 renderItem={renderItem}
                 renderSectionHeader={renderSectionHeader}
                 ItemSeparatorComponent={separator}
             />
+            )}
         </View>
     )
 }
@@ -109,5 +119,20 @@ const menuStyles = StyleSheet.create({
     separator: {
         borderBottomWidth: 1,
         borderColor:'#EDEFEE',
+    },
+    button: {
+        fontSize: 22,
+        padding: 8,
+        marginVertical: 8,
+        backgroundColor: 'white',
+        borderColor: 'white',
+        borderWidth: 2,
+        borderRadius: 12,
+    },
+    buttonText: {
+        fontSize: 24,
+        padding: 8,
+        marginVertical: 8,
+        textAlign: 'center'
     },
 })
