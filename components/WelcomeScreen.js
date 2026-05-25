@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { View, Text, ScrollView, StyleSheet } from 'react-native';
+import { View, Text, ScrollView, StyleSheet, Image } from 'react-native';
 
 export default function WelcomeScreen() {
     return <ScrollView indicatorStyle={'white'} style={welcomeStyles.container}>
+        <Image source={require('../img/LittleLemonLogo.png')} />
         <Text style={welcomeStyles.headerText}>
             Welcome to Little Lemon
         </Text>
