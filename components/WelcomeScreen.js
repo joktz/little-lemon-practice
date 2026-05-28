@@ -1,19 +1,29 @@
-import * as React from 'react';
-import { View, Text, ScrollView, StyleSheet, Image } from 'react-native';
+import React, {useState} from 'react';
+import { View, Text, ScrollView, StyleSheet, Image, useColorScheme} from 'react-native';
 
 export default function WelcomeScreen() {
-    return <ScrollView indicatorStyle={'white'} style={welcomeStyles.container}>
+    const colorScheme = useColorScheme();
+
+    const isDark = colorscheme === 'dark';
+
+    return <ScrollView indicatorStyle={'white'}
+        style={[welcomeStyles.container, colorScheme === 'light' ?
+            {backgroundColor: '#fff'} : {backgroundColor: '#333333'}
+        ]}>
         <View style={welcomeStyles.headerWrapper}>
-            <Image resizemode='contain' 
+            <Image resizeMode='contain' 
                 style={welcomeStyles.logo} 
                 source={require('../img/LittleLemonLogo2.png')}
                 accessible={true}
                 accessibilityLabel='Little Lemon Logo' />
-            <Text style={welcomeStyles.headerText}>
-            Little Lemon
+            <Text style={[welcomeStyles.headerText, colorScheme === 'light' ?
+                {color: '#333333'} : {color: 'EDEFEE'}
+            ]}>
+                Little Lemon
             </Text>
         </View>
-        <Text style={welcomeStyles.description}>
+        <Text style={[welcomeStyles.description, colorScheme === 'light' ?
+                {color: '#333333'} : {color: 'EDEFEE'}]}>
             Little Lemon is a charming neighborhood bistro that serves simple food and classic cocktails in a lively but casual
             environment. We would leave to hear more about your experience with us!
         </Text>
@@ -48,15 +58,15 @@ const welcomeStyles = StyleSheet.create({
     },
     headerText: {
         fontSize: 24,
-        color: '#EDEFEE',
         paddingLeft: 30,
         textAlign: 'center',
+        color: 'white',
     },
     description: {
         textAlign: 'center',
-        color: '#EDEFEE',
         padding: 20,
         fontSize: 16,
+        color: 'white',
     },
     logo: {
         height: 100,
