@@ -16,15 +16,20 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
       <NavigationContainer>
-        <Stack.Navigator initialRouteName='Welcome' screenOptions={{headerStyle: {backgroundColor: '#FBDABB'}}}>
-          <Stack.Screen 
-            options= {{title: 'Home'}}
-            name='Welcome'
-            component={WelcomeScreen} 
-          />
-          <Stack.Screen name='Login' component={LoginScreen} />
-          <Stack.Screen name='Menu' component={MenuItems} />
-        </Stack.Navigator>
+        <View style={styles.container}>
+            <Stack.Navigator initialRouteName='Login' screenOptions={{headerStyle: {backgroundColor: '#FBDABB'}}}>
+              <Stack.Screen 
+                options= {{title: 'Home'}}
+                name='Welcome'
+                component={WelcomeScreen} 
+              />
+              <Stack.Screen name='Login' component={LoginScreen} />
+              <Stack.Screen name='Menu' component={MenuItems} />
+          </Stack.Navigator>
+          <View style={styles.footerContainer}>
+              <Footer />
+          </View>
+        </View>
       </NavigationContainer>
   );
 }
@@ -32,7 +37,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'space-between',
-    backgroundColor: '#333333'
+    backgroundColor: '#333333',
   },
+  footerContainer: { backgroundColor: '#333333' },
 });
