@@ -1,4 +1,5 @@
-import { StyleSheet, Text, View, useWindowDimensions} from 'react-native';
+import { StyleSheet, View} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 
 // Import local components
 import LittleLemonHeader from './components/LittleLemonHeader';
@@ -9,18 +10,20 @@ import FeedbackForm from './components/FeedbackForm';
 import LoginScreen from './components/LoginScreen';
 
 export default function App() {
-  const {width, height, fontScale} = useWindowDimensions();
   return (
-      <View style={styles.container}>
-        <LittleLemonHeader />
-        <WelcomeScreen />
-        {/* <LoginScreen /> */}
-        {/* <FeedbackForm /> */}
-        {/* <MenuItems /> */}
-        <View>
-          <Footer />
+      <NavigationContainer>
+          <View style={styles.container}>
+            <LittleLemonHeader />
+            <WelcomeScreen />
+            {/* <LoginScreen /> */}
+            {/* <FeedbackForm /> */}
+            {/* <MenuItems /> */}
+            <View>
+              <Footer />
+            </View>
         </View>
-    </View>
+      </NavigationContainer>
+      
   );
 }
 

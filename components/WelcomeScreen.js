@@ -4,8 +4,6 @@ import { View, Text, ScrollView, StyleSheet, Image, useColorScheme} from 'react-
 export default function WelcomeScreen() {
     const colorScheme = useColorScheme();
 
-    const isDark = colorscheme === 'dark';
-
     return <ScrollView indicatorStyle={'white'}
         style={[welcomeStyles.container, colorScheme === 'light' ?
             {backgroundColor: '#fff'} : {backgroundColor: '#333333'}
@@ -17,13 +15,13 @@ export default function WelcomeScreen() {
                 accessible={true}
                 accessibilityLabel='Little Lemon Logo' />
             <Text style={[welcomeStyles.headerText, colorScheme === 'light' ?
-                {color: '#333333'} : {color: 'EDEFEE'}
+                {color: '#333333'} : {color: '#EDEFEE'}
             ]}>
                 Little Lemon
             </Text>
         </View>
         <Text style={[welcomeStyles.description, colorScheme === 'light' ?
-                {color: '#333333'} : {color: 'EDEFEE'}]}>
+                {color: '#333333'} : {color: '#EDEFEE'}]}>
             Little Lemon is a charming neighborhood bistro that serves simple food and classic cocktails in a lively but casual
             environment. We would leave to hear more about your experience with us!
         </Text>
