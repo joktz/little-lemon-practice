@@ -1,7 +1,9 @@
 import React, {useState} from 'react';
-import { View, Text, ScrollView, StyleSheet, Image, useColorScheme} from 'react-native';
+import { useNavigation } from '@react-navigation/native';  // add this
+import { View, Text, ScrollView, StyleSheet, Image, useColorScheme, Pressable } from 'react-native';
 
 export default function WelcomeScreen() {
+    const navigation = useNavigation(); 
     const colorScheme = useColorScheme();
 
     return <ScrollView indicatorStyle={'white'}
@@ -21,6 +23,9 @@ export default function WelcomeScreen() {
             Little Lemon is a charming neighborhood bistro that serves simple food and classic cocktails in a lively but casual
             environment. We would leave to hear more about your experience with us!
         </Text>
+        <Pressable onPress={() => navigation.navigate('Menu')}>
+            <Text style={welcomeStyles.buttonText}>View Menu</Text>
+        </Pressable>
         <Image resizemode='contain' 
             style={welcomeStyles.image} 
             source={require('../img/Picture1.png')}
@@ -75,5 +80,10 @@ const welcomeStyles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         margin: 10,
+    },
+    buttonText: {
+        textAlign: 'center',
+        color: 'white',
+        fontSize: 24,
     }
 })

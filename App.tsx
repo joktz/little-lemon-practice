@@ -17,7 +17,8 @@ export default function App() {
   return (
       <NavigationContainer>
         <View style={styles.container}>
-            <Stack.Navigator initialRouteName='Login' screenOptions={{headerStyle: {backgroundColor: '#FBDABB'}}}>
+            <LittleLemonHeader />
+            <Stack.Navigator initialRouteName='Welcome' >
               <Stack.Screen 
                 options= {{title: 'Home'}}
                 name='Welcome'
