@@ -11,14 +11,10 @@ export default function WelcomeScreen() {
         <View style={welcomeStyles.headerWrapper}>
             <Image resizeMode='contain' 
                 style={welcomeStyles.logo} 
-                source={require('../img/LittleLemonLogo2.png')}
+                source={require('../img/LittleLemonLogo.png')}
                 accessible={true}
-                accessibilityLabel='Little Lemon Logo' />
-            <Text style={[welcomeStyles.headerText, colorScheme === 'light' ?
-                {color: '#333333'} : {color: '#EDEFEE'}
-            ]}>
-                Little Lemon
-            </Text>
+                accessibilityLabel='Little Lemon Logo' 
+            />
         </View>
         <Text style={[welcomeStyles.description, colorScheme === 'light' ?
                 {color: '#333333'} : {color: '#EDEFEE'}]}>
@@ -52,6 +48,7 @@ const welcomeStyles = StyleSheet.create({
     container:{
         flex: 1,
         padding: 24,
+        backgroundColor: '#333333',
     },
     headerText: {
         fontSize: 24,
@@ -66,8 +63,8 @@ const welcomeStyles = StyleSheet.create({
         color: 'white',
     },
     logo: {
-        height: 100,
-        width: 100,
+        height: 150,
+        width: 300,
         borderRadius: 20,
     },
     image: {
