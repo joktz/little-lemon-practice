@@ -16,8 +16,12 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
       <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen name='Welcome' component={WelcomeScreen} />
+        <Stack.Navigator initialRouteName='Welcome' screenOptions={{headerStyle: {backgroundColor: '#FBDABB'}}}>
+          <Stack.Screen 
+            options= {{title: 'Home'}}
+            name='Welcome'
+            component={WelcomeScreen} 
+          />
           <Stack.Screen name='Menu' component={MenuItems} />
         </Stack.Navigator>
       </NavigationContainer>

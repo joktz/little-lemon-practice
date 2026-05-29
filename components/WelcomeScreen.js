@@ -52,7 +52,6 @@ const welcomeStyles = StyleSheet.create({
     container:{
         flex: 1,
         padding: 24,
-        marginTop: 25,
     },
     headerText: {
         fontSize: 24,
