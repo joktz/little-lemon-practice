@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { useNavigation } from '@react-navigation/native';  // add this
+import { useNavigation } from '@react-navigation/native';
 import { View, Text, ScrollView, StyleSheet, Image, useColorScheme, Pressable } from 'react-native';
 
 export default function WelcomeScreen() {

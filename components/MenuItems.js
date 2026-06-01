@@ -1,4 +1,5 @@
 import React, { useState} from 'react';
+import { useNavigation } from '@react-navigation/native';
 import { View, Text, StyleSheet, SectionList, Pressable } from 'react-native';
 
 // The list of menu items
@@ -58,8 +59,8 @@ const Item = ({name, price}) => {
 
 
 export default function MenuItems() {
+    const navigation = useNavigation(); 
     // Function calling for SectionList
-    const [showMenu, setShowMenu] = useState(false)
     const renderItem = ({item}) => <Item name={item.name} price={item.price}/>
 
     const renderSectionHeader = ({section: {title}}) => (
@@ -70,28 +71,23 @@ export default function MenuItems() {
 
     return (
         <View style={menuStyles.container}>
-            <Pressable style={menuStyles.button} onPress={() => {
-                setShowMenu(!showMenu);
-            }}>
-                <Text style={menuStyles.buttonText}> 
-                    {showMenu ? 'Home' : 'View Menu'}
-                </Text>
-            </Pressable>
-            {showMenu && (
-                <SectionList sections={menuItemsToDisplay}
+            <SectionList sections={menuItemsToDisplay}
                 renderItem={renderItem}
                 renderSectionHeader={renderSectionHeader}
                 ItemSeparatorComponent={separator}
             />
-            )}
+            <Pressable onPress={() => navigation.goBack()}>
+                <Text style={menuStyles.buttonText} >Go back</Text>
+            </Pressable>
         </View>
     )
 }
 
 const menuStyles = StyleSheet.create({
     container: {
-        flex: 0.9,
+        flex: 1,
         padding: 10,
+        backgroundColor: '#333333',
     },
     innerContainer: {
         paddingHorizontal: 40,
@@ -133,6 +129,7 @@ const menuStyles = StyleSheet.create({
         fontSize: 24,
         padding: 8,
         marginVertical: 8,
-        textAlign: 'center'
+        textAlign: 'center',
+        color: 'white',
     },
 })

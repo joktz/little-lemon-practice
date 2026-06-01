@@ -17,12 +17,19 @@ export default function App() {
   return (
       <NavigationContainer>
         <View style={styles.container}>
-            <LittleLemonHeader />
-            <Stack.Navigator initialRouteName='Welcome' >
+            <Stack.Navigator 
+              initialRouteName='Welcome'
+              screenOptions={{
+                headerStyle: { backgroundColor: '#EE9972',},
+                headerTitleStyle:{
+                  fontWeight: 'bold',
+                }
+              }}
+            >
               <Stack.Screen 
                 options= {{title: 'Home'}}
                 name='Welcome'
-                component={WelcomeScreen} 
+                component={WelcomeScreen}
               />
               <Stack.Screen name='Login' component={LoginScreen} />
               <Stack.Screen name='Menu' component={MenuItems} />
@@ -38,7 +45,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#333333',
   },
   footerContainer: { backgroundColor: '#333333' },
 });
