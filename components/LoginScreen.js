@@ -7,41 +7,38 @@ export default function LoginScreen() {
 
     const [email, onChangeEmail] = React.useState('');
     const [password, onChangePassword] = React.useState('');
-    const [loggedIn, setLoggedIn] = React.useState(false);
+
+    // Constant for log in capability (prevent login if password / email missing)
+    const canLogin = email.length > 0 && password.length > 0;
 
     return (
         <KeyboardAvoidingView style={styles.container}>
             <ScrollView keyboardDismissMode='on-drag' >
                 <Text style={styles.regularText}> Welcome to Little Lemon </Text>
-                {loggedIn ? (
-                    <>
-                        <Text style={styles.headerText}> You are logged in! </Text>
-                    </>
-                ) : (
-                    <>
-                        <Text style={styles.regularText}> Log in to continue </Text>
-                        <TextInput 
-                            value={email}
-                            onChangeText={onChangeEmail}
-                            placeholder='Email'
-                            style={styles.input}
-                            keyboardType={'email-address'}
-                            clearButtonMode='always'
-                        />
-                        <TextInput
-                            value={password}
-                            onChangeText={onChangePassword}
-                            placeholder='Password'
-                            style={styles.input}
-                            keyboardType={'default'}
-                            secureTextEntry={true}
-                            clearButtonMode='always'
-                        />
-                        <Pressable style={styles.button} onPress={() => navigation.navigate('Welcome')}>
-                            <Text style={styles.buttonText}> Log in </Text>
-                        </Pressable>
-                    </>
-                )}
+                    <Text style={styles.regularText}> Log in to continue </Text>
+                    <TextInput 
+                        value={email}
+                        onChangeText={onChangeEmail}
+                        placeholder='Email'
+                        style={styles.input}
+                        keyboardType={'email-address'}
+                        clearButtonMode='always'
+                    />
+                    <TextInput
+                        value={password}
+                        onChangeText={onChangePassword}
+                        placeholder='Password'
+                        style={styles.input}
+                        keyboardType={'default'}
+                        secureTextEntry={true}
+                        clearButtonMode='always'
+                    />
+                    <Pressable 
+                        style={styles.button}
+                        disabled={!canLogin}
+                        onPress={() => navigation.navigate('Welcome')}>
+                        <Text style={styles.buttonText}> Log in </Text>
+                    </Pressable>
             </ScrollView>
         </KeyboardAvoidingView>     
     )
