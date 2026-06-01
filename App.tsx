@@ -1,4 +1,4 @@
-import { StyleSheet, View} from 'react-native';
+import { StyleSheet, View, Image} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
@@ -13,17 +13,30 @@ import LoginScreen from './components/LoginScreen';
 //Instantiate the stack
 const Stack = createNativeStackNavigator();
 
+// Logo rendering
+function LogoTitle() {
+  return (
+    <Image source={require('./img/LittleLemonSmallLogo.png')}
+      style={{
+        height: 40,
+        width: 300,
+        resizeMode: 'contain',
+        alignSelf: 'center',
+      }} 
+    />
+  )
+}
+
 export default function App() {
   return (
       <NavigationContainer>
         <View style={styles.container}>
             <Stack.Navigator 
-              initialRouteName='Welcome'
+              initialRouteName='Login'
               screenOptions={{
                 headerStyle: { backgroundColor: '#EE9972',},
-                headerTitleStyle:{
-                  fontWeight: 'bold',
-                }
+                headerTitle: () => <LogoTitle />,
+                headerTitleAlign: 'center',
               }}
             >
               <Stack.Screen 
