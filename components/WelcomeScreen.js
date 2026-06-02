@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
-import { View, Text, ScrollView, StyleSheet, Image, useColorScheme} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { View, Text, ScrollView, StyleSheet, Image, useColorScheme, Pressable } from 'react-native';
 
 export default function WelcomeScreen() {
+    const navigation = useNavigation(); 
     const colorScheme = useColorScheme();
-
-    const isDark = colorscheme === 'dark';
 
     return <ScrollView indicatorStyle={'white'}
         style={[welcomeStyles.container, colorScheme === 'light' ?
@@ -13,20 +13,19 @@ export default function WelcomeScreen() {
         <View style={welcomeStyles.headerWrapper}>
             <Image resizeMode='contain' 
                 style={welcomeStyles.logo} 
-                source={require('../img/LittleLemonLogo2.png')}
+                source={require('../img/LittleLemonLogo.png')}
                 accessible={true}
-                accessibilityLabel='Little Lemon Logo' />
-            <Text style={[welcomeStyles.headerText, colorScheme === 'light' ?
-                {color: '#333333'} : {color: 'EDEFEE'}
-            ]}>
-                Little Lemon
-            </Text>
+                accessibilityLabel='Little Lemon Logo' 
+            />
         </View>
         <Text style={[welcomeStyles.description, colorScheme === 'light' ?
-                {color: '#333333'} : {color: 'EDEFEE'}]}>
+                {color: '#333333'} : {color: '#EDEFEE'}]}>
             Little Lemon is a charming neighborhood bistro that serves simple food and classic cocktails in a lively but casual
             environment. We would leave to hear more about your experience with us!
         </Text>
+        <Pressable onPress={() => navigation.navigate('Menu')}>
+            <Text style={welcomeStyles.buttonText}>View Menu</Text>
+        </Pressable>
         <Image resizemode='contain' 
             style={welcomeStyles.image} 
             source={require('../img/Picture1.png')}
@@ -54,7 +53,6 @@ const welcomeStyles = StyleSheet.create({
     container:{
         flex: 1,
         padding: 24,
-        marginTop: 25,
     },
     headerText: {
         fontSize: 24,
@@ -69,8 +67,8 @@ const welcomeStyles = StyleSheet.create({
         color: 'white',
     },
     logo: {
-        height: 100,
-        width: 100,
+        height: 150,
+        width: 300,
         borderRadius: 20,
     },
     image: {
@@ -82,5 +80,10 @@ const welcomeStyles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         margin: 10,
+    },
+    buttonText: {
+        textAlign: 'center',
+        color: 'white',
+        fontSize: 24,
     }
 })
