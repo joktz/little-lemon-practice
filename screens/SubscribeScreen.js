@@ -1,19 +1,22 @@
 import React, {useState} from 'react';
-import { View, ScrollView, Image, StyleSheet, Text, KeyboardAvoidingView, TextInput, Pressable, Alert } from 'react-native';
+import { View, ScrollView, Image, StyleSheet, Text, KeyboardAvoidingView, TextInput, Pressable, Alert, Platform } from 'react-native';
 import { validateEmail } from '../utils';
 
 const SubscribeScreen = () => {
   // Instantiate useState variables
   const [email, onChangeEmail] = React.useState('');
   const isEmailValid = Boolean(validateEmail(email));
+
+  // Display alert regardless of web or mobile
   const subscribe = () => {
-    console.log('Button pressed!');
-    console.log(isEmailValid);
-    alert(
+    console.log(Platform.OS);
+    if (Platform.OS == 'web') {
+      alert('Thanks for susbcribing, Stay tuned!');
+    }
+
+    Alert.alert(
       'Thanks for subscribing, stay tuned!',
-      [
-        {text: 'Ok'}
-      ]
+      [{text: 'Ok'}]
     );
   }
 
