@@ -7,10 +7,10 @@ const WelcomeScreen = ({ navigation }) => {
       <Image source={require('../img/logo1.png')} style={styles.image} />
       <Text style={styles.text}>Little Lemon, your local Mediterranean Bistro</Text>
       <View style={styles.buttonContainer}>
-        <Pressable style={styles.button}>
+        <Pressable style={styles.button} onPress={() => navigation.navigate('Menu')}>
           <Text style={styles.buttonText}>See Menu</Text>
         </Pressable>
-        <Pressable style={styles.button}>
+        <Pressable style={styles.button} onPress={() => navigation.navigate('Subscribe')}>
           <Text style={styles.buttonText}>Newsletter</Text>
         </Pressable>
       </View>
