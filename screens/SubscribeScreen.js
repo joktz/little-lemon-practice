@@ -21,7 +21,7 @@ const SubscribeScreen = () => {
   }
 
   return (
-    <KeyboardAvoidingView>
+    <KeyboardAvoidingView style={styles.keyboardContainer}>
       <ScrollView contentContainerStyle={styles.container}>
         <Image source={require('../img/little-lemon-logo-grey.png')} style={styles.image}/>
         <Text style={styles.text}>Subscribe to our newsletter for our latest delicious recipes!</Text>
@@ -49,7 +49,12 @@ const SubscribeScreen = () => {
 
 export default SubscribeScreen;
 
+// KeyboardAvoiding view messeses with flex and screen filling
+// Had to create layered views / containers to get items to space without manual margins
 const styles = StyleSheet.create({
+  keyboardContainer: {
+    flex: 1,
+  },
   container: {
     flexGrow: 1,
     alignItems: 'center',
@@ -59,11 +64,14 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginRight: 16,
     marginLeft: 16,
+    marginTop: 24,
+    marginBottom: 24,
   },
   image: {
-    height: 300,
-    width: 300,
+    height: 200,
+    width: 200,
     resizeMode: 'contain',
+    margin: 16,
   },
   buttonContainer: {
     width: '100%',
